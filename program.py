@@ -2,8 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-# horas = input('Ingrese la cantidad de horas disponibles a la semana: ')
-# print('Cantidad de horas disponibles: ', horas)
+
 
 # Load expert table
 expert = pd.read_csv('expert_table.csv')
@@ -84,9 +83,17 @@ def get_recommended_courses(hours, n=5):
         print_title(hard_title)
         print('\n'.join((sorted_data.sort_values('hard', ascending=False))[1:n *hard + 1]['nombre_materia'].values))
 
-plt.title('Course Difficulty')
-plt.xlabel('Teacher Review Score')
-plt.plot(teacher_rating, difficulty_easy)
-plt.plot(teacher_rating, difficulty_moderate)
-plt.plot(teacher_rating, difficulty_hard)
-plt.show()
+while(1):
+    horas = input('\nInput the amount of hours available for school or press "0" to exit \n')
+    if(horas==0):
+        print '\nThanks!\n'
+        break;
+    print '\nRecommended courses:\n'    
+    get_recommended_courses(horas, 1)
+
+# plt.title('Course Difficulty')
+# plt.xlabel('Teacher Review Score')
+# plt.plot(teacher_rating, difficulty_easy)
+# plt.plot(teacher_rating, difficulty_moderate)
+# plt.plot(teacher_rating, difficulty_hard)
+# plt.show()
