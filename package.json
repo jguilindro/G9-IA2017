@@ -1,0 +1,15 @@
+{
+  "name": "G9-IA2017",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jguilindro/G9-IA2017.git",
+  "author": "Joel Rodriguez <joelerll@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "npm run bower install",
+    "bower": "bower"
+  },
+  "dependencies": {
+    "bower": "^1.8.0"
+  }
+}
