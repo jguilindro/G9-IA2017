@@ -20,10 +20,12 @@ materia = {'nombre_materia': '', 'codigo_materia': '', 'creditos_teoricos': '', 
 # aulas_csv.write('nombre_materia|codigo_materia|creditos_teoricos|creditos_practicos\n')
 # profesores_materia.write('codigo_materia|nombre_materia|anio|semestre|profesor|paralelo|promedio\n')
 #
+preguntas = ''
+for i in range(1,91):
+    preguntas = preguntas + '{}_numero|{}_media|{}_puntaje_obtenido|{}_desviacion_estandar|'.format(i,i,i,i)
+preguntas = preguntas[:-1]
 
-xrange = range(1,80)
-preguntas = reduce(lambda x, y: str(x) + '|'+str(y), xrange)
-profesores_detalle.write('profesor|unidad|materia|paralelo|anio|periodo|estudiantes_registrados|estudiantes_evaluados|numero_estudiantes_fuera_periodo|numero_preguntas|promedio_unidad|promedio_unidad_encuesta|promedio_profesor_paralelo|promedio_estandar_paralelo|link|' + preguntas + '\n')
+profesores_detalle.write('profesor|unidad|materia|paralelo|anio|periodo|estudiantes_registrados|estudiantes_evaluados|numero_estudiantes_fuera_periodo|numero_preguntas|promedio_unidad|promedio_unidad_encuesta|promedio_profesor_paralelo|promedio_estandar_paralelo|link|creditos_teoricos|codigo_materia|creditos_practicos|' + preguntas + '\n')
 
 def hola():
     ## obtener los links de cada materia base de la pagina
@@ -44,10 +46,10 @@ def hola():
             # aulas_csv.write('{},{},{},{}\n'.format(nombre_materia,codigo_materia,creditos_teoricos,creditos_practicos))
             link = page.xpath('//*[@id="right"]/div[2]/table//tr[5]//tr[{}]//td[6]//a/@href'.format(str(i)))[0]
             # print('La materia: {}'.format(link))
-            parse_materia(url_global + link)
+            parse_materia(url_global + link,creditos_teoricos,codigo_materia,creditos_practicos)
 
 ## entrar a ver historial de cada una de las materias
-def parse_materia(response):
+def parse_materia(response,creditos_teoricos,codigo_materia,creditos_practicos):
     time.sleep(0.2)
     page = html.fromstring(requests.get(response).content)
     tamano = len(page.xpath('//*[@id="right"]/div[2]/table//tr[3]/td/table//tr/td/table[2]//tr'))
@@ -58,7 +60,7 @@ def parse_materia(response):
             link = page.xpath('//*[@id="right"]/div[2]/table//tr[3]/td/table//tr/td/table[2]//tr[{}]/td[8]/a/@href'.format(str(i)))[0]
             # print('El detaller profesor:  {}'.format(link))
             ## detalles por curso especifico
-            parse_detalles_curso(url_global + link, link)
+            parse_detalles_curso(url_global + link, link,creditos_teoricos,codigo_materia,creditos_practicos)
 
         ## tablas de paginacion
         tamano_pagination = len(page.xpath('//*[@id="right"]/div[2]/table//tr[3]/td/table//tr/td/table[4]//tr/td/div//a'))
@@ -67,19 +69,19 @@ def parse_materia(response):
             path_pagination = '//*[@id="right"]/div[2]/table//tr[3]/td/table//tr/td/table[4]//tr/td/div//a[{}]/@href'.format(str(k))
             url = page.xpath(path_pagination)[0]
             # print('El detaller profesor:  {}'.format(url))
-            parse_tabla(url_global + url)
+            parse_tabla(url_global + url,creditos_teoricos,codigo_materia,creditos_practicos)
 
 # recorrer la paginacion de todo
-def parse_tabla(response):
+def parse_tabla(response,creditos_teoricos,codigo_materia,creditos_practicos):
     time.sleep(0.2)
     page = html.fromstring(requests.get(response).content)
     tamano = len(page.xpath('//*[@id="right"]/div[2]/table//tr[3]/td/table//tr/td/table[2]//tr'))
     for i in range(2,tamano + 1):
         guardar_profesor(i,page)
         link = page.xpath('//*[@id="right"]/div[2]/table//tr[3]/td/table//tr/td/table[2]//tr[{}]/td[8]/a/@href'.format(str(i)))[0]
-        parse_detalles_curso(url_global + link, link)
+        parse_detalles_curso(url_global + link, link,creditos_teoricos,codigo_materia,creditos_practicos)
 
-def parse_detalles_curso(response, link):
+def parse_detalles_curso(response, link,creditos_teoricos,codigo_materia,creditos_practicos):
     ## obtener la tabla de detaller de este progesor
     time.sleep(0.2)
     estado = True
@@ -89,7 +91,7 @@ def parse_detalles_curso(response, link):
         estado = False
         pass
     if (estado):
-        guardar_paralelo(page, link)
+        guardar_paralelo(page, link,creditos_teoricos,codigo_materia,creditos_practicos)
     # sys.exit("Error message")
 
 def guardar_profesor(i,page):
@@ -102,37 +104,37 @@ def guardar_profesor(i,page):
     promedio = page.xpath('//*[@id="right"]/div[2]/table//tr[3]/td/table//tr/td/table[2]//tr[{}]//td[{}]//text()'.format(str(i), str(6)))[0]
     # profesores_materia.write("{}|{}|{}|{}|{}|{}|{}\n".format(codigo.strip(),nombre_materia.strip(),anio.strip(),semestre.strip(),re.sub(' +',' ',profesor),paralelo.strip(),promedio.strip()))
 
-def guardar_paralelo(page, link):
+def guardar_paralelo(page, link,creditos_teoricos,codigo_materia,creditos_practicos):
     profesor = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[1]/td/text()[preceding-sibling::br][3]')[0]
-    profesor = profesor.split(':')[1]
+    profesor = profesor.split(':')[1].strip()
     unidad =  page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[1]/text()[preceding-sibling::br][1]')[0]
-    unidad = unidad.split(':')[1]
+    unidad = unidad.split(':')[1].strip()
     materia = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[1]/text()[preceding-sibling::br][2]')[0]
-    materia = materia.split(':')[1]
+    materia = materia.split(':')[1].strip()
     paralelo = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[1]/text()[preceding-sibling::br][3]')[0]
-    paralelo = paralelo.split(':')[1]
+    paralelo = paralelo.split(':')[1].strip()
     anio = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[1]/text()[preceding-sibling::br][4]')[0]
-    anio = anio.split(':')[1]
+    anio = anio.split(':')[1].strip()
     periodo = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[1]/text()[preceding-sibling::br][5]')[0]
-    periodo = periodo.split(':')[1]
+    periodo = periodo.split(':')[1].strip()
     estudiantes_registrados = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[2]/text()')[0]
-    estudiantes_registrados = estudiantes_registrados.split(':')[1]
+    estudiantes_registrados = estudiantes_registrados.split(':')[1].strip()
     estudiantes_evaluados = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[2]/text()[preceding-sibling::br][1]')[0]
-    estudiantes_evaluados = estudiantes_evaluados.split(':')[1]
+    estudiantes_evaluados = estudiantes_evaluados.split(':')[1].strip()
     numero_estudiantes_fuera_periodo = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[2]/text()[preceding-sibling::br][2]')[0]
-    numero_estudiantes_fuera_periodo = numero_estudiantes_fuera_periodo.split(':')[1]
+    numero_estudiantes_fuera_periodo = numero_estudiantes_fuera_periodo.split(':')[1].strip()
     numero_preguntas = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[2]/text()[preceding-sibling::br][3]')[0]
-    numero_preguntas = numero_preguntas.split(':')[1]
+    numero_preguntas = numero_preguntas.split(':')[1].strip()
     promedio_unidad = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[2]/text()[preceding-sibling::br][4]')[0]
-    promedio_unidad = promedio_unidad.split(':')[1]
-    promedio_unidad_encuesta = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[2]/text()[preceding-sibling::br][5]')[0]
-    promedio_unidad_encuesta = promedio_unidad_encuesta.split(':')[1]
-    promedio_profesor_paralelo = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[2]//strong[1]/text()')[0].split(':')[1]
+    promedio_unidad = promedio_unidad.split(':')[1].strip()
+    promedio_unidad_encuesta = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[2]/text()[preceding-sibling::br][5]')[0].strip()
+    promedio_unidad_encuesta = promedio_unidad_encuesta.split(':')[1].strip()
+    promedio_profesor_paralelo = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[2]//strong[1]/text()')[0].split(':')[1].strip()
     promedio_estandar_paralelo = '-1'
     try:
-        promedio_estandar_paralelo = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[2]//strong[2]/a/text()')[0]
+        promedio_estandar_paralelo = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[2]//strong[2]/a/text()')[0].strip()
     except:
-        promedio_estandar_paralelo = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[2]//strong[2]/text()')[0].split(':')[1]
+        promedio_estandar_paralelo = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[1]//tr[2]/td[2]//strong[2]/text()')[0].split(':')[1].strip()
     # 1_1, 1_2, 1_3
     tablas = page.xpath('//*[@id="right"]/div[2]/table[1]//table')
     #profesores_materia.write("{}|{}|{}|{}|{}|{}|{}\n".format(codigo.strip(),nombre_materia.strip(),anio.strip(),semestre.strip(),re.sub(' +',' ',profesor),paralelo.strip(),promedio.strip()))
@@ -157,7 +159,7 @@ def guardar_paralelo(page, link):
                 except:
                     desviacion_estandar = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[{}]//tr[{}]/td[4]/text()'.format(str(j),str(i)))[0]
                 puntaje_obtenido = page.xpath('//*[@id="right"]/div[2]/table[1]//tr[3]/td/table[{}]//tr[{}]/td[5]/text()'.format(str(j),str(i)))[0]
-                preguntas_todas.append("{}?{}?{}?{}".format(numero.strip(),media.strip(),puntaje_obtenido.strip(),desviacion_estandar.strip()))
+                preguntas_todas.append("{}|{}|{}|{}".format(numero.strip(),media.strip(),puntaje_obtenido.split('%')[0],desviacion_estandar.strip()))
             except:
                 print('error')
                 #bandera = False
@@ -166,7 +168,7 @@ def guardar_paralelo(page, link):
         #bandera = True
     # profesores_detalle.write('profesor|unidad|materia|paralelo|anio|periodo|estudiantes_registrados|estudiantes_evaluados|numero_estudiantes_fuera_periodo|numero_preguntas|promedio_unidad|promedio_unidad_encuesta|promedio_profesor_paralelo|link|' + preguntas + '\n')
     preg = '|'.join(preguntas_todas)
-    profesores_detalle.write('{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{} \n'.format(profesor,unidad,materia,paralelo,anio,periodo,estudiantes_registrados,estudiantes_evaluados,numero_estudiantes_fuera_periodo,numero_preguntas,promedio_unidad,promedio_unidad_encuesta,promedio_profesor_paralelo,promedio_estandar_paralelo,link,preg))
+    profesores_detalle.write('{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}\n'.format(profesor,unidad,materia,paralelo,anio,periodo,estudiantes_registrados,estudiantes_evaluados,numero_estudiantes_fuera_periodo,numero_preguntas,promedio_unidad,promedio_unidad_encuesta,promedio_profesor_paralelo,promedio_estandar_paralelo,link,creditos_teoricos,codigo_materia,creditos_practicos,preg))
     print(link)
     print(numero_preguntas)
     print(preguntas_todas)
