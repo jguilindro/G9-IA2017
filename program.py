@@ -88,9 +88,9 @@ while(1):
     if(horas==0):
         print '\nThanks!\n'
         break;
-    print '\nRecommended courses:\n'    
+    print '\nRecommended courses:\n'
     get_recommended_courses(horas, 1)
-
+    
 # plt.title('Course Difficulty')
 # plt.xlabel('Teacher Review Score')
 # plt.plot(teacher_rating, difficulty_easy)
