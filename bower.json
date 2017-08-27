@@ -1,0 +1,22 @@
+{
+  "name": "G9-IA2017",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Joel Rodriguez <joelerll@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jguilindro/G9-IA2017",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./app_client/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vue": "^2.4.2",
+    "materialize": "^0.100.1"
+  }
+}
