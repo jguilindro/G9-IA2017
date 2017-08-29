@@ -38,7 +38,7 @@ def ANN_predict(new_samples):
                                                         shuffle=False)
 
     predictions = list(classifier.predict(input_fn=predict_input_fn))
-    predicted_classes = [p["classes"] for p in predictions]
+    predicted_classes = [int(p["classes"][0]) for p in predictions]
 
     return predicted_classes
 
