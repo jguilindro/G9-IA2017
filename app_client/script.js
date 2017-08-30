@@ -1,4 +1,30 @@
-$(function () {
+
+
+
+ $("#drop").change(function () {
+        var end = this.value;
+        var firstDropVal = $('#drop').find(":selected").attr("id");
+        console.log(firstDropVal);
+        if(firstDropVal!="DEF"){
+       $.ajax({
+        type: "GET",
+        url: "/api/carreras/"+firstDropVal,
+        dataType: "json",
+        success: function(csv) {procesarCSV(csv);}
+        });
+        }
+        else {
+            $('#seleccion').empty();
+        }
+});
+
+function procesarCSV(csv) {
+    $('#seleccion').empty();
+    $(csv.datos).each(function(i,item) {
+        $("#seleccion").append('<li class="list-group-item">'+item.nombre+'</li>');
+    });
+
+    $(function () {
     $('.list-group.checked-list-box .list-group-item').each(function () {
         
         // Settings
@@ -76,34 +102,5 @@ $(function () {
         $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
     });
 });
-
-
- $("#drop").change(function () {
-        var end = this.value;
-        var firstDropVal = $('#pick').val();
-       /*$.ajax({
-        type: "GET",
-        url: "Ciencias Computacionales.csv",
-        dataType: "text",
-        success: function(csv) {procesarCSV(csv);}
-        });*/
-        fetch('Ciencias Computacionales.csv')
-      .then(response => response.json())
-      .then(data => {
-        // Here's a list of repos!
-        console.log(data)
-         });
-    });
-
-
-function processData(csv) {
-    var data = $.csv.toObjects(csv);
-
-    $(data).each(function(i,item) {
-
-        $("<li/>").text(item.materia).appendTo('#seleccion');
-
-    });
-
 }
 
