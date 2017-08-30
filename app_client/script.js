@@ -104,3 +104,15 @@ function procesarCSV(csv) {
 });
 }
 
+function enviarDatos(){
+    var escogidas=[];
+     $('#seleccion').find('li').each(function(){
+        if($(this).attr('class')=="list-group-item list-group-item-primary active"){
+            escogidas.push(1);
+        } else{
+            escogidas.push(0);
+        }
+     });
+     console.log(escogidas);
+    $('#myModal').modal('toggle');
+}
