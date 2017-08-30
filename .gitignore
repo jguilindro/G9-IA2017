@@ -7,3 +7,4 @@ share/
 node_modules/
 app_client/bower_components
 include/
+.ipynb_checkpoints/
