@@ -8,6 +8,7 @@ node_modules/
 app_client/bower_components
 include/
 
+
 # OS generated files #
 ######################
 .DS_Store
