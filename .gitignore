@@ -7,3 +7,13 @@ share/
 node_modules/
 app_client/bower_components
 include/
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.dbs
