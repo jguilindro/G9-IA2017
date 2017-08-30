@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:53e6586254b448040ba695c6a1de4cd106a6eb5dc8716e6d67ae2525bfe78a62
-size 84
+hoursAvailable,easy,moderate,hard
+40,1,2,2
+30,2,1,2
+20,1,2,1
+10,2,1,1
+5,1,0,1
