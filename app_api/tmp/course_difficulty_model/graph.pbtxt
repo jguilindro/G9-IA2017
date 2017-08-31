@@ -175,7 +175,7 @@ node {
     value {
       list {
         type: DT_INT64
-        type: DT_INT64
+        type: DT_DOUBLE
         type: DT_INT64
       }
     }
@@ -212,7 +212,7 @@ node {
         }
         shape {
           dim {
-            size: 20
+            size: 67
           }
         }
         shape {
@@ -273,7 +273,7 @@ node {
   attr {
     key: "dtype"
     value {
-      type: DT_INT64
+      type: DT_DOUBLE
     }
   }
   attr {
@@ -327,7 +327,7 @@ node {
     value {
       list {
         type: DT_INT64
-        type: DT_INT64
+        type: DT_DOUBLE
         type: DT_INT64
       }
     }
@@ -668,7 +668,7 @@ node {
             size: -1
           }
           dim {
-            size: 20
+            size: 67
           }
         }
         shape {
@@ -684,7 +684,7 @@ node {
     value {
       list {
         type: DT_INT64
-        type: DT_INT64
+        type: DT_DOUBLE
         type: DT_INT64
       }
     }
@@ -709,7 +709,7 @@ node {
   attr {
     key: "SrcT"
     value {
-      type: DT_INT64
+      type: DT_DOUBLE
     }
   }
   attr {
@@ -721,7 +721,7 @@ node {
             size: -1
           }
           dim {
-            size: 20
+            size: 67
           }
         }
       }
@@ -949,7 +949,7 @@ node {
         dtype: DT_INT32
         tensor_shape {
         }
-        int_val: 20
+        int_val: 67
       }
     }
   }
@@ -1016,7 +1016,7 @@ node {
             size: -1
           }
           dim {
-            size: 20
+            size: 67
           }
         }
       }
@@ -1072,7 +1072,7 @@ node {
             size: -1
           }
           dim {
-            size: 20
+            size: 67
           }
         }
       }
@@ -1118,7 +1118,7 @@ node {
             size: 2
           }
         }
-        tensor_content: "\024\000\000\000\036\000\000\000"
+        tensor_content: "C\000\000\000\036\000\000\000"
       }
     }
   }
@@ -1156,7 +1156,7 @@ node {
         dtype: DT_FLOAT
         tensor_shape {
         }
-        float_val: -0.346410155296
+        float_val: -0.248707994819
       }
     }
   }
@@ -1194,7 +1194,7 @@ node {
         dtype: DT_FLOAT
         tensor_shape {
         }
-        float_val: 0.346410155296
+        float_val: 0.248707994819
       }
     }
   }
@@ -1223,7 +1223,7 @@ node {
       list {
         shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30
@@ -1305,7 +1305,7 @@ node {
       list {
         shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30
@@ -1340,7 +1340,7 @@ node {
       list {
         shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30
@@ -1367,7 +1367,7 @@ node {
       list {
         shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30
@@ -1393,7 +1393,7 @@ node {
     value {
       shape {
         dim {
-          size: 20
+          size: 67
         }
         dim {
           size: 30
@@ -1433,7 +1433,7 @@ node {
       list {
         shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30
@@ -1479,7 +1479,7 @@ node {
       list {
         shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30
@@ -1676,7 +1676,7 @@ node {
       list {
         shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30
@@ -8666,7 +8666,7 @@ node {
             size: -1
           }
           dim {
-            size: 20
+            size: 67
           }
         }
       }
@@ -8702,7 +8702,7 @@ node {
       list {
         shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30
@@ -8758,7 +8758,7 @@ node {
             size: -1
           }
           dim {
-            size: 20
+            size: 67
           }
         }
       }
@@ -8790,7 +8790,7 @@ node {
       list {
         shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30
@@ -8817,7 +8817,7 @@ node {
       list {
         shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30
@@ -8839,7 +8839,7 @@ node {
         dtype: DT_FLOAT
         tensor_shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30
@@ -8867,7 +8867,7 @@ node {
       list {
         shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30
@@ -8893,7 +8893,7 @@ node {
     value {
       shape {
         dim {
-          size: 20
+          size: 67
         }
         dim {
           size: 30
@@ -8933,7 +8933,7 @@ node {
       list {
         shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30
@@ -8979,7 +8979,7 @@ node {
       list {
         shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30
@@ -9577,7 +9577,7 @@ node {
       list {
         shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30
@@ -12307,7 +12307,7 @@ node {
         dtype: DT_STRING
         tensor_shape {
         }
-        string_val: "_temp_5edf9aa4b3954abaaadd71605be955fa/part"
+        string_val: "_temp_18aec07365154d86ad92c02d4eb5d466/part"
       }
     }
   }
@@ -12492,8 +12492,8 @@ node {
         }
         string_val: "30 0,30"
         string_val: "30 0,30"
-        string_val: "20 30 0,20:0,30"
-        string_val: "20 30 0,20:0,30"
+        string_val: "67 30 0,67:0,30"
+        string_val: "67 30 0,67:0,30"
         string_val: "5 0,5"
         string_val: "5 0,5"
         string_val: "30 5 0,30:0,5"
@@ -12983,7 +12983,7 @@ node {
             size: 1
           }
         }
-        string_val: "20 30 0,20:0,30"
+        string_val: "67 30 0,67:0,30"
       }
     }
   }
@@ -13038,7 +13038,7 @@ node {
       list {
         shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30
@@ -13127,7 +13127,7 @@ node {
             size: 1
           }
         }
-        string_val: "20 30 0,20:0,30"
+        string_val: "67 30 0,67:0,30"
       }
     }
   }
@@ -13182,7 +13182,7 @@ node {
       list {
         shape {
           dim {
-            size: 20
+            size: 67
           }
           dim {
             size: 30

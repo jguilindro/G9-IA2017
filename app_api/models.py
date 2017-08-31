@@ -11,7 +11,7 @@ def ANN_train(training_input, training_target,epochs=1):
                                             hidden_units=[30],
                                             n_classes=5,
                                             model_dir="./tmp/course_difficulty_model",
-                                            config=tf.contrib.learn.RunConfig(save_checkpoints_steps=10))
+                                            config=tf.contrib.learn.RunConfig(save_checkpoints_steps=1))
 
     # Define the training inputs
     train_input_fn = tf.estimator.inputs.numpy_input_fn(x={"x": np.array(training_input)},

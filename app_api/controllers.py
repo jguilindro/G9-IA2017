@@ -107,7 +107,7 @@ def recomendacion(student_info):
 	materias = student_info['materias']
 	courses = student_info['estado']
 	courses_available = course_selection.courses_available(courses,major)
-	test_set = [course_selection.get_feature_sample(sample) if courses_available[index]==1 for sample,index in enumerate(materias)]
+	test_set = [np.squeeze(course_selection.get_feature_sample(sample).values.T.tolist(),axis=1) for (index,sample) in enumerate(materias) if courses_available[index]==1]
 	difficulty = models.ANN_predict(test_set)
 	student_info['materias_disponibles'] =  courses_available
 	student_info['dificultad'] = difficulty

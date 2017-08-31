@@ -11,11 +11,7 @@ from routes import Recomendacion
 
 
 root_dir = os.path.dirname(os.getcwd())
-<<<<<<< HEAD
 app = Flask(__name__,static_folder=os.path.join(root_dir, 'app_client'),static_url_path='')
-=======
-app = Flask(__name__,static_folder=os.path.join(root_dir,'app_client'),static_url_path='')
->>>>>>> 174cb46add0432a416a10e0d38cac568c1fc33bc
 
 """
 API rutas
@@ -58,7 +54,6 @@ Vistas en Clientes, instalar las dependencias con npm install
 """
 @app.route('/', methods=['GET'])
 def index():
-<<<<<<< HEAD
 	return send_from_directory(os.path.join(root_dir, 'app_client'), 'index.html')
 
 @app.route('/experts', methods=['GET'])
@@ -68,19 +63,6 @@ def experts_client():
 @app.route('/novices', methods=['GET'])
 def novices_client():
 	return send_from_directory(os.path.join(root_dir, 'app_client','novices'), 'novices.html')
-=======
-	print (root_dir)
-	print (os.path.join(root_dir, 'G9-IA2017','app_client'))
-	return send_from_directory(os.path.join(root_dir,'app_client'), 'index.html')
-
-@app.route('/experts', methods=['GET'])
-def experts_client():
-	return send_from_directory(os.path.join(root_dir, 'app_client', 'experts'), 'experts.html')
-
-@app.route('/novices', methods=['GET'])
-def novices_client():
-	return send_from_directory(os.path.join(root_dir, 'app_client', 'novices'), 'novices.html')
->>>>>>> 174cb46add0432a416a10e0d38cac568c1fc33bc
 
 if __name__ == '__main__':
     app.run(debug=True)
