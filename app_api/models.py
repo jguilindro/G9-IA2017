@@ -43,9 +43,9 @@ def ANN_predict(new_samples):
     return predicted_classes
 
 
-def main():
-    training_input = [np.full((67),1),np.full((67),2),np.full((67),3)]
-    training_target = [1,2,3]
-    test_input = [np.full((67),1),np.full((67),2),np.full((67),3)]
-    ANN_train(training_input,training_target,epochs=5)
-    print 'Classifier response: {}'.format(ANN_predict(test_input))
+#def main():
+ #   training_input = [np.full((67),1),np.full((67),2),np.full((67),3)]
+  #  training_target = [1,2,3]
+   # test_input = [np.full((67),1),np.full((67),2),np.full((67),3)]
+   # ANN_train(training_input,training_target,epochs=5)
+   # print 'Classifier response: {}'.format(ANN_predict(test_input))

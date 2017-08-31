@@ -5,7 +5,9 @@ import course_selection
 import json
 import pandas
 import models
-
+import codecs
+import csv
+import numpy as np
 """
 EJEMPLO
 
@@ -102,14 +104,14 @@ POST
 """
 
 def recomendacion(student_info):
-	student_info = json.load(student_info)
+	#student_info = json.loads(student_info)
 	major = student_info['carrera_id']
 	materias = student_info['materias']
 	courses = student_info['estado']
 	courses_available = course_selection.courses_available(courses,major)
 	test_set = [np.squeeze(course_selection.get_feature_sample(sample).values.T.tolist(),axis=1) for (index,sample) in enumerate(materias) if courses_available[index]==1]
 	difficulty = models.ANN_predict(test_set)
-	student_info['materias_disponibles'] =  courses_available
+	student_info['materias_disponibles'] =  courses_available.tolist()
 	student_info['dificultad'] = difficulty
 
 

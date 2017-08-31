@@ -19,10 +19,14 @@
 });
 
 function procesarCSV(csv) {
+    var codigos= [];
     $('#seleccion').empty();
     $(csv.datos).each(function(i,item) {
         $("#seleccion").append('<li class="list-group-item">'+item.nombre+'</li>');
+        codigos.push(item.materia);
     });
+
+    $("#codigos").val(JSON.stringify(codigos));
 
     $(function () {
     $('.list-group.checked-list-box .list-group-item').each(function () {
@@ -106,6 +110,10 @@ function procesarCSV(csv) {
 
 function enviarDatos(){
     var escogidas=[];
+    var firstDropVal = $('#drop').find(":selected").attr("id");
+
+    if(firstDropVal!="DEF"){
+
      $('#seleccion').find('li').each(function(){
         if($(this).attr('class')=="list-group-item list-group-item-primary active"){
             escogidas.push(1);
@@ -113,6 +121,24 @@ function enviarDatos(){
             escogidas.push(0);
         }
      });
-     console.log(escogidas);
-    $('#myModal').modal('toggle');
+
+     var envio={carrera_id: firstDropVal, materias: JSON.parse($("#codigos").val()), estado: escogidas};
+     console.log(envio);
+
+     $.ajax({
+        type: "POST",
+        url: "/api/recomendacion",
+        data: JSON.stringify(envio),
+        dataType: "json",
+        success: function(response) {
+
+            console.log(response);
+            $('#myModal').modal('toggle');
+        }
+        });
+     
+
+    
+
+    }
 }
