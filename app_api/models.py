@@ -11,6 +11,7 @@ def ANN_train(training_input, training_target,epochs=1):
                                             hidden_units=[30],
                                             n_classes=5,
                                             model_dir="./tmp/course_difficulty_model",
+                                            activation_fn=tf.nn.relu,
                                             config=tf.contrib.learn.RunConfig(save_checkpoints_steps=1))
 
     # Define the training inputs
@@ -41,11 +42,3 @@ def ANN_predict(new_samples):
     predicted_classes = [int(p["classes"][0]) for p in predictions]
 
     return predicted_classes
-
-
-def main():
-    training_input = [np.full((67),1),np.full((67),2),np.full((67),3)]
-    training_target = [1,2,3]
-    test_input = [np.full((67),1),np.full((67),2),np.full((67),3)]
-    ANN_train(training_input,training_target,epochs=5)
-    print 'Classifier response: {}'.format(ANN_predict(test_input))

@@ -5,6 +5,8 @@ import course_selection
 import json
 import pandas
 import models
+import codecs
+import csv
 
 """
 EJEMPLO
@@ -93,16 +95,17 @@ POST
 
 ## Response (aqui no se bien que info se enviara)
 {
-	"materias": [
-		1,2,3
-	]
-	'estado': [1,0,0]
+	'carrera_id': 'CC',
+	"materias": ['FIEC1','FIEC2','FIEC3'],
+	'estado': [1,0,0],
+	'materias_disponibles':[0,1,1]
+	'dificultad':[3,4]
 }
 
 """
 
 def recomendacion(student_info):
-	student_info = json.load(student_info)
+	student_info = json.loads(student_info)
 	major = student_info['carrera_id']
 	materias = student_info['materias']
 	courses = student_info['estado']
