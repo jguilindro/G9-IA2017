@@ -11,10 +11,11 @@
     <div class="form-group">
     <label for="sel1">Seleccione su carrera:</label>
   <select class="form-control" id="drop">
-    <option id="opComputacion">Ingeniería en Computación</option>
-    <option id="opTeleco">Ingeniería en Telecomunicaciones</option>
-    <option id="opTelematica">Ingeniería en Telemática</option>
-    <option id="opElectricidad">Ingeniería en Electricidad</option>
+  <option selected="selected" id="DEF">Seleccione una Carrera</option>
+    <option id="CC">Ingeniería en Computación</option>
+    <option id="TC">Ingeniería en Telecomunicaciones</option>
+    <option id="TM">Ingeniería en Telemática</option>
+    <option id="EE">Ingeniería en Electricidad</option>
   </select>
 </div>
 <br/>
@@ -23,16 +24,6 @@
             <h4 class="text-center">Escoja las materias que haya pasado.</h3>
             <div class="well" style="max-height: 300px;overflow: auto;">
         		<ul class="list-group checked-list-box" id="seleccion">
-                 <!-- <li class="list-group-item">Calculo de una variable  </li>
-                  <li class="list-group-item">Calculo de varias variables  </li>
-                  <li class="list-group-item">Fundamentos de Programación  </li>
-                  <li class="list-group-item">Fisica I  </li>
-                  <li class="list-group-item">Ecuaciones Diferenciales  </li>
-                  <li class="list-group-item">Fisica II  </li>
-                  <li class="list-group-item">Programacion de Sistemas  </li>
-                  <li class="list-group-item">Inteligencia Artificial  </li>
-                  <li class="list-group-item">Programacion Orientada a Objetos  </li>
-                  <li class="list-group-item">Estructuras de Datos  </li>-->
                 </ul>
             </div>
         </div>
@@ -42,7 +33,7 @@
     </fieldset>
 <br/>
     <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-toggle="modal" data-target="#myModal" data-submit="...Sending">Submit</button>
+      <button name="submit" type="button" id="contact-submit" onclick="enviarDatos()">Submit</button>
     </fieldset>
     
   </form>
@@ -52,51 +43,10 @@
 		<div class="modal-content">
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h4 class="modal-title" id="myModalLabel">Busquedas</h4>
+			<h4 class="modal-title" id="myModalLabel">Recomendaciones</h4>
 		  </div>
 		  <div class="modal-body modal-body-v2">
-				<div class="tab-v2 margin-bottom-40">
-						<ul class="nav nav-tabs">
-							<li class="active"><a href="#alert-1" data-toggle="tab" aria-expanded="true">Por codigo </a></li>
-							<li class=""><a href="#alert-2" data-toggle="tab" aria-expanded="false">Por cedula</a></li>
-						</ul>
-						<div class="tab-content">
-
-							<div class="tab-pane fade active in" id="alert-1">
-								<form class="form-horizontal" role="form">
-									<div class="form-group">
-										<label for="inputEmail1" class="col-lg-2 control-label">Codigo</label>
-										<div class="col-lg-10">
-											<input type="text" class="form-control" id="inputEmail1" placeholder="Codigo">
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-lg-offset-2 col-lg-10">
-											<button type="button" class="btn-u btn-u-default" data-dismiss="modal">Cerrar</button>
-											<button type="submit" class="btn-u btn-u-blue">Buscar</button>
-										</div>
-									</div>
-								</form>
-							</div>
-
-							<div class="tab-pane fade" id="alert-2">
-								<form class="form-horizontal" role="form">
-									<div class="form-group">
-										<label for="inputEmail1" class="col-lg-2 control-label">Cedula </label>
-										<div class="col-lg-10">
-											<input type="text" class="form-control" id="inputEmail1" placeholder="Cedula">
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-lg-offset-2 col-lg-10">
-											<button type="button" class="btn-u btn-u-default" data-dismiss="modal">Cerrar</button>
-											<button type="submit" class="btn-u btn-u-blue">Buscar</button>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
+				
 			</div>
 		</div>
 	  </div>

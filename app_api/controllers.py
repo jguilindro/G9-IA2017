@@ -66,24 +66,13 @@ materias = [
 """
 def obtenerMateriasCarrera(carrera_id):
 	## buscar en la base de datos o cualquier cosa el por carrera_id
-	materias = [
-		{
-			'id': 1,
-			'nombre': 'Analisis Algoritmos',
-			'codigo': 'FIEC55',
-		},
-		{
-			'id': 2,
-			'nombre': 'Programacion Orientada a objecto',
-			'codigo': 'FIEC55',
-		},
-		{
-			'id': 3,
-			'nombre': 'Inteligencia Artificial',
-			'codigo': 'FIEC55',
-		},
-	]
+	materias = []
+	with codecs.open('{}.csv'.format(carrera_id), 'r','UTF-8') as csvfile:
+		spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+		for row in spamreader:
+			materias.append({'materia': row[0], 'nombre': row[1]})
 	return materias
+
 
 
 """
