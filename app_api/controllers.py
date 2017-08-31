@@ -1,13 +1,15 @@
 """
 Se encargara de manejar la logica de como tratar los datos: acceso a base de datos, manejo de logica de sistema inteligente
 """
-
+import course_selection
 import json
+import pandas
+import models
 
 """
 EJEMPLO
 
-GET 
+GET
 
 Response
 carreras = [
@@ -88,7 +90,7 @@ def obtenerMateriasCarrera(carrera_id):
 
 POST
 
-## Request 
+## Request
 {
 	"carrera_id": 1,
 	"carreras": [
@@ -103,28 +105,23 @@ POST
 ## Response (aqui no se bien que info se enviara)
 {
 	"materias": [
-		{
-			"id": 1,
-			"nombre": "Algoritmos",
-			"curso": "",
-
-		}
+		1,2,3
 	]
+	'estado': [1,0,0]
 }
 
 """
 
-def recomendacion(entradas):
-	carrera_id = entradas['carrera_id']
-	carreras = entradas['carreras']
-	horas = entradas['horas']
-	resp = [
-		{
-			"id": 1,
-			"nombre": "Algoritmos",
-			"curso": "",
+def recomendacion(student_info):
+	student_info = json.load(student_info)
+	major = student_info['carrera_id']
+	materias = student_info['materias']
+	courses = student_info['estado']
+	courses_available = course_selection.courses_available(courses,major)
+	test_set = [course_selection.get_feature_sample(sample) if courses_available[index]==1 for sample,index in enumerate(materias)]
+	difficulty = models.ANN_predict(test_set)
+	student_info['materias_disponibles'] =  courses_available
+	student_info['dificultad'] = difficulty
 
-		}
-	]
 
-	return resp
+	return student_info

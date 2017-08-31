@@ -11,7 +11,7 @@ from routes import Recomendacion
 
 
 root_dir = os.path.dirname(os.getcwd())
-app = Flask(__name__,static_folder=os.path.join(root_dir, 'G9-IA2017/app_client'),static_url_path='')
+app = Flask(__name__,static_folder=os.path.join(root_dir, 'app_client'),static_url_path='')
 
 """
 API rutas
@@ -50,19 +50,19 @@ def not_found(error):
 
 
 """
-Vistas en Clientes, instalar las dependencias con npm install 
+Vistas en Clientes, instalar las dependencias con npm install
 """
 @app.route('/', methods=['GET'])
 def index():
-	return send_from_directory(os.path.join(root_dir, 'G9-IA2017/app_client'), 'index.html')
+	return send_from_directory(os.path.join(root_dir, 'app_client'), 'index.html')
 
 @app.route('/experts', methods=['GET'])
 def experts_client():
-	return send_from_directory(os.path.join(root_dir, 'G9-IA2017/app_client/experts'), 'experts.html')
+	return send_from_directory(os.path.join(root_dir, 'app_client','experts'), 'experts.html')
 
 @app.route('/novices', methods=['GET'])
 def novices_client():
-	return send_from_directory(os.path.join(root_dir, 'G9-IA2017/app_client/novices'), 'novices.html')
+	return send_from_directory(os.path.join(root_dir, 'app_client','novices'), 'novices.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
