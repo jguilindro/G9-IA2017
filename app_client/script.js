@@ -20,13 +20,16 @@
 
 function procesarCSV(csv) {
     var codigos= [];
+    var nombres= [];
     $('#seleccion').empty();
     $(csv.datos).each(function(i,item) {
         $("#seleccion").append('<li class="list-group-item">'+item.nombre+'</li>');
         codigos.push(item.materia);
+        nombres.push(item.nombre);
     });
 
     $("#codigos").val(JSON.stringify(codigos));
+    $("#nombres").val(JSON.stringify(nombres));
 
     $(function () {
     $('.list-group.checked-list-box .list-group-item').each(function () {
@@ -110,6 +113,8 @@ function procesarCSV(csv) {
 
 function enviarDatos(){
     var escogidas=[];
+    var nombres= JSON.parse($("#nombres").val());
+    var disponibilidad= $('#tiempo').find(":selected").attr("id");
     var firstDropVal = $('#drop').find(":selected").attr("id");
 
     if(firstDropVal!="DEF"){
@@ -131,8 +136,57 @@ function enviarDatos(){
         data: JSON.stringify(envio),
         dataType: "json",
         success: function(response) {
-
+            var codigos= JSON.parse($("#codigos").val());
+            var dif0= {materias: [], codigos: []};
+            var dif1= {materias: [], codigos: []};
+            var dif2= {materias: [], codigos: []};
+            var dif3= {materias: [], codigos: []};
+            var dif4= {materias: [], codigos: []};
+            var recomendaciones= {materias: [], codigos: []};
+            var cont=0;
             console.log(response);
+
+            $(response.datos.materias_disponibles).each(function(i,item) {
+                if(item==1){
+                    
+                    switch(response.datos.dificultad[cont]) {
+                        case 0:
+                            dif0.materias.push(nombres[i]);
+                            dif0.codigos.push(codigos[i]);
+                            break;
+                        case 1:
+                            dif1.materias.push(nombres[i]);
+                            dif1.codigos.push(codigos[i]);
+                            break;
+                        case 2:
+                            dif2.materias.push(nombres[i]);
+                            dif2.codigos.push(codigos[i]);
+                            break;
+                        case 3:
+                            dif3.materias.push(nombres[i]);
+                            dif3.codigos.push(codigos[i]);
+                            break;
+                        case 4:
+                            dif4.materias.push(nombres[i]);
+                            dif4.codigos.push(codigos[i]);
+                            break;            
+                    }
+                cont++;
+                }
+            });
+
+            /*
+            console.log(dif0);
+            console.log(dif1);
+            console.log(dif2);
+            console.log(dif3);
+            console.log(dif4);*/
+
+            
+
+            //$("#recomendaciones").append('<h3>'+nombres[i]+'</h3>');
+
+
             $('#myModal').modal('toggle');
         }
         });
