@@ -17,8 +17,8 @@ def get_feature_sample(course):
     col_select = sample.columns[7:-1]
     return sample[col_select].loc[sample['codigo_materia']==course]
 
-def train_ann(epochs=100):
+def train_ann(epochs=100,validation_size=6):
     mayor_dep = np.genfromtxt('./tmp/features_training.csv', delimiter='|',filling_values=0)
     training_input = mayor_dep[:,11:-1]
     training_target = mayor_dep[:,-1].astype(int)
-    models.ANN_train(training_input, training_target,epochs=epochs)
+    models.ANN_train(training_input, training_target,epochs=epochs, validation_size=validation_size)

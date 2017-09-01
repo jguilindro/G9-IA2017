@@ -2,12 +2,12 @@ import tensorflow as tf
 import numpy as np
 tf.logging.set_verbosity(tf.logging.INFO)
 
-def ANN_train(training_input, training_target,epochs=1):
+def ANN_train(training_input, training_target,epochs=1,validation_size=6):
 
-    test_input = training_input[-6:,:]
-    test_target = training_target[-6:]
-    train_input = training_input[:-6,:]
-    train_target = training_target[:-6]
+    test_input = training_input[:validation_size,:]
+    test_target = training_target[:validation_size]
+    train_input = training_input[validation_size+1:,:]
+    train_target = training_target[validation_size+1:]
 
     predict_input_fn = tf.estimator.inputs.numpy_input_fn(x={"x": np.array(test_input)},
                                                         num_epochs=1,
@@ -38,7 +38,7 @@ def ANN_train(training_input, training_target,epochs=1):
 
     correct_prediction = np.equal(predicted_classes,test_target)
     accuracy = float(sum(correct_prediction))/len(test_target)
-    print predicted_classes
+    print (predicted_classes)
     print (accuracy)
 
 def ANN_predict(new_samples):
