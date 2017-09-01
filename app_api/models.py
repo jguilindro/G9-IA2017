@@ -38,7 +38,7 @@ def ANN_train(training_input, training_target,epochs=1):
 
     correct_prediction = np.equal(predicted_classes,test_target)
     accuracy = float(sum(correct_prediction))/len(test_target)
-    print predicted_classes
+    print (predicted_classes)
     print (accuracy)
 
 def ANN_predict(new_samples):

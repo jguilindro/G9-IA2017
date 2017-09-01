@@ -175,12 +175,308 @@ function enviarDatos(){
                 }
             });
 
-            /*
             console.log(dif0);
             console.log(dif1);
             console.log(dif2);
             console.log(dif3);
-            console.log(dif4);*/
+            console.log(dif4);
+            console.log(disponibilidad);
+
+            if (disponibilidad=="NJ"){
+                if(dif4.materias.length>0){
+                $("#recomendaciones").append('<h3>'+dif4.materias[0]+'</h3>');
+                dif4.materias.shift();
+				dif4.codigos.shift();
+                } else if(dif3.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif3.materias[0]+'</h3>');
+                    dif3.materias.shift();
+					dif3.codigos.shift();
+                } else if(dif2.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif2.materias[0]+'</h3>');
+                    dif2.materias.shift();
+					dif2.codigos.shift();
+                } else if(dif1.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif1.materias[0]+'</h3>');
+                    dif1.materias.shift();
+					dif1.codigos.shift();
+                } else if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                }
+
+                if(dif4.materias.length>0){
+                $("#recomendaciones").append('<h3>'+dif4.materias[0]+'</h3>');
+                dif4.materias.shift();
+				dif4.codigos.shift();
+                } else if(dif3.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif3.materias[0]+'</h3>');
+                    dif3.materias.shift();
+					dif3.codigos.shift();
+                } else if(dif2.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif2.materias[0]+'</h3>');
+                    dif2.materias.shift();
+					dif2.codigos.shift();
+                } else if(dif1.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif1.materias[0]+'</h3>');
+                    dif1.materias.shift();
+					dif1.codigos.shift();
+                } else if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                }
+                
+                if(dif3.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif3.materias[0]+'</h3>');
+                    dif3.materias.shift();
+					dif3.codigos.shift();
+                } else if(dif2.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif2.materias[0]+'</h3>');
+                    dif2.materias.shift();
+					dif2.codigos.shift();
+                } else if(dif1.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif1.materias[0]+'</h3>');
+                    dif1.materias.shift();
+					dif1.codigos.shift();
+                } else if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                } 
+
+                if(dif2.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif2.materias[0]+'</h3>');
+                    dif2.materias.shift();
+					dif2.codigos.shift();
+                } else if(dif1.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif1.materias[0]+'</h3>');
+                    dif1.materias.shift();
+					dif1.codigos.shift();
+                } else if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                } else if(dif4.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif4.materias[0]+'</h3>');
+                    dif4.materias.shift();
+                    dif4.codigos.shift();
+                }
+
+                if(dif1.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif1.materias[0]+'</h3>');
+                    dif1.materias.shift();
+					dif1.codigos.shift();
+                } else if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                }
+
+            }
+            if (disponibilidad=="TA"){
+                
+                if(dif4.materias.length>0){
+                $("#recomendaciones").append('<h3>'+dif4.materias[0]+'</h3>');
+                dif4.materias.shift();
+				dif4.codigos.shift();
+                } else if(dif3.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif3.materias[0]+'</h3>');
+                    dif3.materias.shift();
+					dif3.codigos.shift();
+                } else if(dif2.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif2.materias[0]+'</h3>');
+                    dif2.materias.shift();
+					dif2.codigos.shift();
+                } else if(dif1.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif1.materias[0]+'</h3>');
+                    dif1.materias.shift();
+					dif1.codigos.shift();
+                } else if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                }
+
+                if(dif3.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif3.materias[0]+'</h3>');
+                    dif3.materias.shift();
+					dif3.codigos.shift();
+                } else if(dif2.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif2.materias[0]+'</h3>');
+                    dif2.materias.shift();
+					dif2.codigos.shift();
+                } else if(dif1.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif1.materias[0]+'</h3>');
+                    dif1.materias.shift();
+					dif1.codigos.shift();
+                } else if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                }
+
+                if(dif2.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif2.materias[0]+'</h3>');
+                    dif2.materias.shift();
+					dif2.codigos.shift();
+                } else if(dif1.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif1.materias[0]+'</h3>');
+                    dif1.materias.shift();
+					dif1.codigos.shift();
+                } else if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                }
+
+                if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                } else if(dif1.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif1.materias[0]+'</h3>');
+                    dif1.materias.shift();
+					dif1.codigos.shift();
+                }
+                if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                }
+
+            }
+            if (disponibilidad=="PTJ"){
+                
+                if(dif4.materias.length>0){
+                $("#recomendaciones").append('<h3>'+dif4.materias[0]+'</h3>');
+                dif4.materias.shift();
+				dif4.codigos.shift();
+                } else if(dif3.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif3.materias[0]+'</h3>');
+                    dif3.materias.shift();
+					dif3.codigos.shift();
+                } else if(dif2.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif2.materias[0]+'</h3>');
+                    dif2.materias.shift();
+					dif2.codigos.shift();
+                } else if(dif1.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif1.materias[0]+'</h3>');
+                    dif1.materias.shift();
+					dif1.codigos.shift();
+                } else if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                }
+
+                if(dif2.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif2.materias[0]+'</h3>');
+                    dif2.materias.shift();
+					dif2.codigos.shift();
+                } else if(dif1.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif1.materias[0]+'</h3>');
+                    dif1.materias.shift();
+					dif1.codigos.shift();
+                } else if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                } else if(dif4.materias.length>0){
+                $("#recomendaciones").append('<h3>'+dif4.materias[0]+'</h3>');
+                dif4.materias.shift();
+				dif4.codigos.shift();
+                }
+
+                if(dif1.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif1.materias[0]+'</h3>');
+                    dif1.materias.shift();
+					dif1.codigos.shift();
+                } else if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                } else if(dif3.materias.length>0){
+                $("#recomendaciones").append('<h3>'+dif3.materias[0]+'</h3>');
+                dif3.materias.shift();
+				dif3.codigos.shift();
+                }
+
+                if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                }
+
+            }
+            if (disponibilidad=="PTJTA"){
+                
+                if(dif4.materias.length>0){
+                $("#recomendaciones").append('<h3>'+dif4.materias[0]+'</h3>');
+                dif4.materias.shift();
+				dif4.codigos.shift();
+                } else if(dif3.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif3.materias[0]+'</h3>');
+                    dif3.materias.shift();
+					dif3.codigos.shift();
+                } else if(dif2.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif2.materias[0]+'</h3>');
+                    dif2.materias.shift();
+					dif2.codigos.shift();
+                } else if(dif1.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif1.materias[0]+'</h3>');
+                    dif1.materias.shift();
+					dif1.codigos.shift();
+                } else if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                }
+                
+                if(dif1.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif1.materias[0]+'</h3>');
+                    dif1.materias.shift();
+					dif1.codigos.shift();
+                } else if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                }
+
+            }
+            if (disponibilidad=="FTJ"){
+                
+                if(dif4.materias.length>0){
+                $("#recomendaciones").append('<h3>'+dif4.materias[0]+'</h3>');
+                dif4.materias.shift();
+				dif4.codigos.shift();
+                } else if(dif3.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif3.materias[0]+'</h3>');
+                    dif3.materias.shift();
+					dif3.codigos.shift();
+                } else if(dif2.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif2.materias[0]+'</h3>');
+                    dif2.materias.shift();
+					dif2.codigos.shift();
+                } else if(dif1.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif1.materias[0]+'</h3>');
+                    dif1.materias.shift();
+					dif1.codigos.shift();
+                } else if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                }
+                
+                if(dif0.materias.length>0){
+                    $("#recomendaciones").append('<h3>'+dif0.materias[0]+'</h3>');
+                    dif0.materias.shift();
+					dif0.codigos.shift();
+                }
+            }
+            
+
+
 
             
 
@@ -196,3 +492,7 @@ function enviarDatos(){
 
     }
 }
+
+$('#myModal').on('hidden.bs.modal', function () {
+  $("#recomendaciones").empty();
+})
