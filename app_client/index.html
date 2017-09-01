@@ -28,14 +28,21 @@
             </div>
         </div>
 <br/>
-    <fieldset>
-      <input placeholder="Ingrese el numero de horas disponibles a la semana" type="text" tabindex="1" required>
-    </fieldset>
+	    <label for="tiempo">Seleccione su disponibilidad de Tiempo:</label>
+	  <select class="form-control" id="tiempo">
+	    <option id="NJ">Sin Empleo (40 horas/semana)</option>
+	    <option id="TA">Ayudante Académico (30 horas/semana)</option>
+	    <option id="PTJ">Empleo de Medio Tiempo (20 horas/semana)</option>
+	    <option id="PTJTA">Empleo de Medio Tiempo y Ayudante (10 horas/semana)</option>
+	    <option id="FTJ">Empleo Tiempo Completo (5 horas/semana)</option>
+	  </select>
+<br/>
 <br/>
     <fieldset>
       <button name="submit" type="button" id="contact-submit" onclick="enviarDatos()">Submit</button>
     </fieldset>
     <input type="text" id="codigos" hidden="true">
+    <input type="text" id="nombres" hidden="true">
   </form>
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -43,9 +50,9 @@
 		<div class="modal-content">
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h4 class="modal-title" id="myModalLabel">Recomendaciones</h4>
+			<h2 class="modal-title" id="myModalLabel">Recomendaciones</h2>
 		  </div>
-		  <div class="modal-body modal-body-v2">
+		  <div class="modal-body modal-body-v2" id="recomendaciones">
 				
 			</div>
 		</div>

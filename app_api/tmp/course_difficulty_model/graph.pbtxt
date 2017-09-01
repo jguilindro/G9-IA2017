@@ -176,7 +176,7 @@ node {
       list {
         type: DT_INT64
         type: DT_DOUBLE
-        type: DT_INT64
+        type: DT_INT32
       }
     }
   }
@@ -302,7 +302,7 @@ node {
   attr {
     key: "dtype"
     value {
-      type: DT_INT64
+      type: DT_INT32
     }
   }
   attr {
@@ -328,7 +328,7 @@ node {
       list {
         type: DT_INT64
         type: DT_DOUBLE
-        type: DT_INT64
+        type: DT_INT32
       }
     }
   }
@@ -537,7 +537,7 @@ node {
         dtype: DT_FLOAT
         tensor_shape {
         }
-        float_val: 0.00133333331905
+        float_val: 0.0013333333190530539
       }
     }
   }
@@ -685,7 +685,7 @@ node {
       list {
         type: DT_INT64
         type: DT_DOUBLE
-        type: DT_INT64
+        type: DT_INT32
       }
     }
   }
@@ -1156,7 +1156,7 @@ node {
         dtype: DT_FLOAT
         tensor_shape {
         }
-        float_val: -0.12786231935
+        float_val: -0.12786231935024261
       }
     }
   }
@@ -1194,7 +1194,7 @@ node {
         dtype: DT_FLOAT
         tensor_shape {
         }
-        float_val: 0.12786231935
+        float_val: 0.12786231935024261
       }
     }
   }
@@ -2144,7 +2144,7 @@ node {
         dtype: DT_FLOAT
         tensor_shape {
         }
-        float_val: -0.140257373452
+        float_val: -0.14025737345218658
       }
     }
   }
@@ -2182,7 +2182,7 @@ node {
         dtype: DT_FLOAT
         tensor_shape {
         }
-        float_val: 0.140257373452
+        float_val: 0.14025737345218658
       }
     }
   }
@@ -3682,7 +3682,7 @@ node {
   attr {
     key: "T"
     value {
-      type: DT_INT64
+      type: DT_INT32
     }
   }
   attr {
@@ -3714,7 +3714,7 @@ node {
   attr {
     key: "T"
     value {
-      type: DT_INT64
+      type: DT_INT32
     }
   }
   attr {
@@ -3773,7 +3773,7 @@ node {
   attr {
     key: "T"
     value {
-      type: DT_INT64
+      type: DT_INT32
     }
   }
   attr {
@@ -4373,7 +4373,7 @@ node {
   attr {
     key: "T"
     value {
-      type: DT_INT64
+      type: DT_INT32
     }
   }
   attr {
@@ -4407,17 +4407,17 @@ node {
   attr {
     key: "dtype"
     value {
-      type: DT_INT64
+      type: DT_INT32
     }
   }
   attr {
     key: "value"
     value {
       tensor {
-        dtype: DT_INT64
+        dtype: DT_INT32
         tensor_shape {
         }
-        int64_val: 5
+        int_val: 5
       }
     }
   }
@@ -4430,7 +4430,7 @@ node {
   attr {
     key: "T"
     value {
-      type: DT_INT64
+      type: DT_INT32
     }
   }
   attr {
@@ -4603,126 +4603,8 @@ node {
   }
 }
 node {
-  name: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Switch"
-  op: "Switch"
-  input: "dnn/head/assert_range/assert_less/All"
-  input: "dnn/head/assert_range/assert_less/All"
-  attr {
-    key: "T"
-    value {
-      type: DT_BOOL
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-        shape {
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_less/Assert/AssertGuard/switch_t"
-  op: "Identity"
-  input: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Switch:1"
-  attr {
-    key: "T"
-    value {
-      type: DT_BOOL
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_less/Assert/AssertGuard/switch_f"
-  op: "Identity"
-  input: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Switch"
-  attr {
-    key: "T"
-    value {
-      type: DT_BOOL
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_less/Assert/AssertGuard/pred_id"
-  op: "Identity"
-  input: "dnn/head/assert_range/assert_less/All"
-  attr {
-    key: "T"
-    value {
-      type: DT_BOOL
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_less/Assert/AssertGuard/NoOp"
-  op: "NoOp"
-  input: "^dnn/head/assert_range/assert_less/Assert/AssertGuard/switch_t"
-}
-node {
-  name: "dnn/head/assert_range/assert_less/Assert/AssertGuard/control_dependency"
-  op: "Identity"
-  input: "dnn/head/assert_range/assert_less/Assert/AssertGuard/switch_t"
-  input: "^dnn/head/assert_range/assert_less/Assert/AssertGuard/NoOp"
-  attr {
-    key: "T"
-    value {
-      type: DT_BOOL
-    }
-  }
-  attr {
-    key: "_class"
-    value {
-      list {
-        s: "loc:@dnn/head/assert_range/assert_less/Assert/AssertGuard/switch_t"
-      }
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Assert/data_0"
+  name: "dnn/head/assert_range/assert_less/Assert/Assert/data_0"
   op: "Const"
-  input: "^dnn/head/assert_range/assert_less/Assert/AssertGuard/switch_f"
   attr {
     key: "_output_shapes"
     value {
@@ -4751,9 +4633,8 @@ node {
   }
 }
 node {
-  name: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Assert/data_1"
+  name: "dnn/head/assert_range/assert_less/Assert/Assert/data_1"
   op: "Const"
-  input: "^dnn/head/assert_range/assert_less/Assert/AssertGuard/switch_f"
   attr {
     key: "_output_shapes"
     value {
@@ -4782,9 +4663,8 @@ node {
   }
 }
 node {
-  name: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Assert/data_3"
+  name: "dnn/head/assert_range/assert_less/Assert/Assert/data_3"
   op: "Const"
-  input: "^dnn/head/assert_range/assert_less/Assert/AssertGuard/switch_f"
   attr {
     key: "_output_shapes"
     value {
@@ -4813,128 +4693,23 @@ node {
   }
 }
 node {
-  name: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Assert/Switch"
-  op: "Switch"
-  input: "dnn/head/assert_range/assert_less/All"
-  input: "dnn/head/assert_range/assert_less/Assert/AssertGuard/pred_id"
-  attr {
-    key: "T"
-    value {
-      type: DT_BOOL
-    }
-  }
-  attr {
-    key: "_class"
-    value {
-      list {
-        s: "loc:@dnn/head/assert_range/assert_less/All"
-      }
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-        shape {
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Assert/Switch_1"
-  op: "Switch"
-  input: "dnn/head/labels"
-  input: "dnn/head/assert_range/assert_less/Assert/AssertGuard/pred_id"
-  attr {
-    key: "T"
-    value {
-      type: DT_INT64
-    }
-  }
-  attr {
-    key: "_class"
-    value {
-      list {
-        s: "loc:@dnn/head/labels"
-      }
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-          dim {
-            size: -1
-          }
-          dim {
-            size: 1
-          }
-        }
-        shape {
-          dim {
-            size: -1
-          }
-          dim {
-            size: 1
-          }
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Assert/Switch_2"
-  op: "Switch"
-  input: "dnn/head/assert_range/Const"
-  input: "dnn/head/assert_range/assert_less/Assert/AssertGuard/pred_id"
-  attr {
-    key: "T"
-    value {
-      type: DT_INT64
-    }
-  }
-  attr {
-    key: "_class"
-    value {
-      list {
-        s: "loc:@dnn/head/assert_range/Const"
-      }
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-        shape {
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Assert"
+  name: "dnn/head/assert_range/assert_less/Assert/Assert"
   op: "Assert"
-  input: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Assert/Switch"
-  input: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Assert/data_0"
-  input: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Assert/data_1"
-  input: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Assert/Switch_1"
-  input: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Assert/data_3"
-  input: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Assert/Switch_2"
+  input: "dnn/head/assert_range/assert_less/All"
+  input: "dnn/head/assert_range/assert_less/Assert/Assert/data_0"
+  input: "dnn/head/assert_range/assert_less/Assert/Assert/data_1"
+  input: "dnn/head/labels"
+  input: "dnn/head/assert_range/assert_less/Assert/Assert/data_3"
+  input: "dnn/head/assert_range/Const"
   attr {
     key: "T"
     value {
       list {
         type: DT_STRING
         type: DT_STRING
-        type: DT_INT64
+        type: DT_INT32
         type: DT_STRING
-        type: DT_INT64
+        type: DT_INT32
       }
     }
   }
@@ -4942,64 +4717,6 @@ node {
     key: "summarize"
     value {
       i: 3
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_less/Assert/AssertGuard/control_dependency_1"
-  op: "Identity"
-  input: "dnn/head/assert_range/assert_less/Assert/AssertGuard/switch_f"
-  input: "^dnn/head/assert_range/assert_less/Assert/AssertGuard/Assert"
-  attr {
-    key: "T"
-    value {
-      type: DT_BOOL
-    }
-  }
-  attr {
-    key: "_class"
-    value {
-      list {
-        s: "loc:@dnn/head/assert_range/assert_less/Assert/AssertGuard/switch_f"
-      }
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_less/Assert/AssertGuard/Merge"
-  op: "Merge"
-  input: "dnn/head/assert_range/assert_less/Assert/AssertGuard/control_dependency_1"
-  input: "dnn/head/assert_range/assert_less/Assert/AssertGuard/control_dependency"
-  attr {
-    key: "N"
-    value {
-      i: 2
-    }
-  }
-  attr {
-    key: "T"
-    value {
-      type: DT_BOOL
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-        shape {
-        }
-      }
     }
   }
 }
@@ -5018,17 +4735,17 @@ node {
   attr {
     key: "dtype"
     value {
-      type: DT_INT64
+      type: DT_INT32
     }
   }
   attr {
     key: "value"
     value {
       tensor {
-        dtype: DT_INT64
+        dtype: DT_INT32
         tensor_shape {
         }
-        int64_val: 0
+        int_val: 0
       }
     }
   }
@@ -5041,7 +4758,7 @@ node {
   attr {
     key: "T"
     value {
-      type: DT_INT64
+      type: DT_INT32
     }
   }
   attr {
@@ -5214,126 +4931,8 @@ node {
   }
 }
 node {
-  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Switch"
-  op: "Switch"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/All"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/All"
-  attr {
-    key: "T"
-    value {
-      type: DT_BOOL
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-        shape {
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_t"
-  op: "Identity"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Switch:1"
-  attr {
-    key: "T"
-    value {
-      type: DT_BOOL
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_f"
-  op: "Identity"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Switch"
-  attr {
-    key: "T"
-    value {
-      type: DT_BOOL
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/pred_id"
-  op: "Identity"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/All"
-  attr {
-    key: "T"
-    value {
-      type: DT_BOOL
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/NoOp"
-  op: "NoOp"
-  input: "^dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_t"
-}
-node {
-  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/control_dependency"
-  op: "Identity"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_t"
-  input: "^dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/NoOp"
-  attr {
-    key: "T"
-    value {
-      type: DT_BOOL
-    }
-  }
-  attr {
-    key: "_class"
-    value {
-      list {
-        s: "loc:@dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_t"
-      }
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/data_0"
+  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/Assert/data_0"
   op: "Const"
-  input: "^dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_f"
   attr {
     key: "_output_shapes"
     value {
@@ -5362,9 +4961,8 @@ node {
   }
 }
 node {
-  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/data_1"
+  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/Assert/data_1"
   op: "Const"
-  input: "^dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_f"
   attr {
     key: "_output_shapes"
     value {
@@ -5393,9 +4991,8 @@ node {
   }
 }
 node {
-  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/data_2"
+  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/Assert/data_2"
   op: "Const"
-  input: "^dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_f"
   attr {
     key: "_output_shapes"
     value {
@@ -5424,87 +5021,13 @@ node {
   }
 }
 node {
-  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/Switch"
-  op: "Switch"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/All"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/pred_id"
-  attr {
-    key: "T"
-    value {
-      type: DT_BOOL
-    }
-  }
-  attr {
-    key: "_class"
-    value {
-      list {
-        s: "loc:@dnn/head/assert_range/assert_non_negative/assert_less_equal/All"
-      }
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-        shape {
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/Switch_1"
-  op: "Switch"
-  input: "dnn/head/labels"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/pred_id"
-  attr {
-    key: "T"
-    value {
-      type: DT_INT64
-    }
-  }
-  attr {
-    key: "_class"
-    value {
-      list {
-        s: "loc:@dnn/head/labels"
-      }
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-          dim {
-            size: -1
-          }
-          dim {
-            size: 1
-          }
-        }
-        shape {
-          dim {
-            size: -1
-          }
-          dim {
-            size: 1
-          }
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert"
+  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/Assert"
   op: "Assert"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/Switch"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/data_0"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/data_1"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/data_2"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert/Switch_1"
+  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/All"
+  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/Assert/data_0"
+  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/Assert/data_1"
+  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/Assert/data_2"
+  input: "dnn/head/labels"
   attr {
     key: "T"
     value {
@@ -5512,7 +5035,7 @@ node {
         type: DT_STRING
         type: DT_STRING
         type: DT_STRING
-        type: DT_INT64
+        type: DT_INT32
       }
     }
   }
@@ -5524,73 +5047,15 @@ node {
   }
 }
 node {
-  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/control_dependency_1"
-  op: "Identity"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_f"
-  input: "^dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Assert"
-  attr {
-    key: "T"
-    value {
-      type: DT_BOOL
-    }
-  }
-  attr {
-    key: "_class"
-    value {
-      list {
-        s: "loc:@dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/switch_f"
-      }
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-      }
-    }
-  }
-}
-node {
-  name: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Merge"
-  op: "Merge"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/control_dependency_1"
-  input: "dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/control_dependency"
-  attr {
-    key: "N"
-    value {
-      i: 2
-    }
-  }
-  attr {
-    key: "T"
-    value {
-      type: DT_BOOL
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-        shape {
-        }
-      }
-    }
-  }
-}
-node {
   name: "dnn/head/assert_range/Identity"
   op: "Identity"
   input: "dnn/head/labels"
-  input: "^dnn/head/assert_range/assert_less/Assert/AssertGuard/Merge"
-  input: "^dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/AssertGuard/Merge"
+  input: "^dnn/head/assert_range/assert_less/Assert/Assert"
+  input: "^dnn/head/assert_range/assert_non_negative/assert_less_equal/Assert/Assert"
   attr {
     key: "T"
     value {
-      type: DT_INT64
+      type: DT_INT32
     }
   }
   attr {
@@ -5616,7 +5081,7 @@ node {
   attr {
     key: "T"
     value {
-      type: DT_INT64
+      type: DT_INT32
     }
   }
   attr {
@@ -5677,7 +5142,7 @@ node {
   attr {
     key: "T"
     value {
-      type: DT_INT64
+      type: DT_INT32
     }
   }
   attr {
@@ -5713,7 +5178,7 @@ node {
   attr {
     key: "Tlabels"
     value {
-      type: DT_INT64
+      type: DT_INT32
     }
   }
   attr {
@@ -8845,7 +8310,7 @@ node {
             size: 300
           }
         }
-        float_val: 0.10000000149
+        float_val: 0.10000000149011612
       }
     }
   }
@@ -9028,7 +8493,7 @@ node {
             size: 300
           }
         }
-        float_val: 0.10000000149
+        float_val: 0.10000000149011612
       }
     }
   }
@@ -9205,7 +8670,7 @@ node {
             size: 5
           }
         }
-        float_val: 0.10000000149
+        float_val: 0.10000000149011612
       }
     }
   }
@@ -9388,7 +8853,7 @@ node {
             size: 5
           }
         }
-        float_val: 0.10000000149
+        float_val: 0.10000000149011612
       }
     }
   }
@@ -9545,7 +9010,7 @@ node {
         dtype: DT_FLOAT
         tensor_shape {
         }
-        float_val: 0.0500000007451
+        float_val: 0.05000000074505806
       }
     }
   }
@@ -12307,7 +11772,7 @@ node {
         dtype: DT_STRING
         tensor_shape {
         }
-        string_val: "_temp_864b85da92e444af8bdd66982a9d73da/part"
+        string_val: "_temp_5c29a42177de49de98fa796f14b24639/part"
       }
     }
   }
