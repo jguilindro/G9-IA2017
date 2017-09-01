@@ -3,24 +3,43 @@ import numpy as np
 tf.logging.set_verbosity(tf.logging.INFO)
 
 def ANN_train(training_input, training_target,epochs=1):
+
+    test_input = training_input[-6:,:]
+    test_target = training_target[-6:]
+    train_input = training_input[:-6,:]
+    train_target = training_target[:-6]
+
+    predict_input_fn = tf.estimator.inputs.numpy_input_fn(x={"x": np.array(test_input)},
+                                                        num_epochs=1,
+                                                        shuffle=False)
+
     # Specify that all features have real-value data
     feature_columns = [tf.feature_column.numeric_column("x", shape=[67])]
 
+
     # Build a DNN
     classifier = tf.estimator.DNNClassifier(feature_columns=feature_columns,
-                                            hidden_units=[30],
+                                            hidden_units=[300],
                                             n_classes=5,
                                             model_dir="./tmp/course_difficulty_model",
-                                            config=tf.contrib.learn.RunConfig(save_checkpoints_steps=1))
+                                            activation_fn=tf.nn.relu)
 
     # Define the training inputs
-    train_input_fn = tf.estimator.inputs.numpy_input_fn(x={"x": np.array(training_input)},
-                                                        y=np.array(training_target),
+    train_input_fn = tf.estimator.inputs.numpy_input_fn(x={"x": np.array(train_input)},
+                                                        y=np.array(train_target),
                                                         num_epochs=epochs,
                                                         shuffle=True)
 
     # Train model.
     classifier.train(input_fn=train_input_fn)
+
+    predictions = list(classifier.predict(input_fn=predict_input_fn))
+    predicted_classes = [int(p["classes"][0]) for p in predictions]
+
+    correct_prediction = np.equal(predicted_classes,test_target)
+    accuracy = float(sum(correct_prediction))/len(test_target)
+    print predicted_classes
+    print (accuracy)
 
 def ANN_predict(new_samples):
     # Specify that all features have real-value data
@@ -28,24 +47,18 @@ def ANN_predict(new_samples):
 
     # Build a DNN
     classifier = tf.estimator.DNNClassifier(feature_columns=feature_columns,
-                                            hidden_units=[30],
+                                            hidden_units=[300],
                                             n_classes=5,
                                             model_dir="./tmp/course_difficulty_model",
-                                            config=tf.contrib.learn.RunConfig(save_checkpoints_steps=1))
+                                            activation_fn=tf.nn.relu)
+
 
     predict_input_fn = tf.estimator.inputs.numpy_input_fn(x={"x": np.array(new_samples)},
                                                         num_epochs=1,
                                                         shuffle=False)
 
+
     predictions = list(classifier.predict(input_fn=predict_input_fn))
     predicted_classes = [int(p["classes"][0]) for p in predictions]
 
     return predicted_classes
-
-
-#def main():
- #   training_input = [np.full((67),1),np.full((67),2),np.full((67),3)]
-  #  training_target = [1,2,3]
-   # test_input = [np.full((67),1),np.full((67),2),np.full((67),3)]
-   # ANN_train(training_input,training_target,epochs=5)
-   # print 'Classifier response: {}'.format(ANN_predict(test_input))

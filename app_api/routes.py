@@ -21,7 +21,7 @@ class Materias:
 	def get_all():
 		return 'todas materias'
 
-	
+
 class Recomendacion:
 	def recomendar(entradas):
 		return jsonify({'datos': controllers.recomendacion(entradas)})

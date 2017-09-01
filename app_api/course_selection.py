@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import models
 
 def courses_available(courses, major):
     # Major = {CC,EE,TC,TM}
@@ -15,3 +16,9 @@ def get_feature_sample(course):
     sample = df.groupby(['codigo_materia']).mean().reset_index()
     col_select = sample.columns[7:-1]
     return sample[col_select].loc[sample['codigo_materia']==course]
+
+def train_ann(epochs=100):
+    mayor_dep = np.genfromtxt('./tmp/features_training.csv', delimiter='|',filling_values=0)
+    training_input = mayor_dep[:,11:-1]
+    training_target = mayor_dep[:,-1].astype(int)
+    models.ANN_train(training_input, training_target,epochs=epochs)
