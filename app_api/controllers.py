@@ -114,5 +114,4 @@ def recomendacion(student_info):
 	student_info['materias_disponibles'] =  courses_available.tolist()
 	student_info['dificultad'] = difficulty
 
-
 	return student_info
